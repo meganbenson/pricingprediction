@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dynamic Pricing Prediction</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+
+    <h1>Dynamic Pricing Recommendation</h1>
+
+    <form method="POST">
+
+        <!-- ======================
+             DEPARTMENT DROPDOWN
+        ======================= -->
+        <label>Department 
+            <small>(Select the department the item belongs to)</small>
+        </label>
+        <select name="dept" required>
+
+            <option value="1">1 — Apparel Basics</option>
+            <option value="2">2 — Mens Clothing</option>
+            <option value="3">3 — Womens Clothing</option>
+            <option value="4">4 — Kids Clothing</option>
+            <option value="5">5 — Shoes & Footwear</option>
+            <option value="6">6 — Jewelry & Accessories</option>
+            <option value="7">7 — Electronics</option>
+            <option value="8">8 — Mobile Devices</option>
+            <option value="9">9 — Home Entertainment</option>
+            <option value="10">10 — Toys & Games</option>
+            <option value="11">11 — Sporting Goods</option>
+            <option value="12">12 — Outdoor Recreation</option>
+            <option value="13">13 — Home Improvement</option>
+            <option value="14">14 — Hardware & Tools</option>
+            <option value="16">16 — Automotive</option>
+            <option value="17">17 — Garden Center</option>
+            <option value="18">18 — Seasonal Items</option>
+            <option value="19">19 — Home Decor</option>
+            <option value="20">20 — Furniture</option>
+            <option value="21">21 — Kitchen Essentials</option>
+            <option value="22">22 — Bath & Bedding</option>
+            <option value="23">23 — Cleaning Supplies</option>
+            <option value="24">24 — Paper Goods</option>
+            <option value="25">25 — Pet Supplies</option>
+            <option value="26">26 — Pharmacy / Health</option>
+            <option value="27">27 — Beauty Products</option>
+            <option value="28">28 — Personal Care</option>
+            <option value="29">29 — Baby Products</option>
+            <option value="30">30 — Infant Essentials</option>
+            <option value="31">31 — Dairy</option>
+            <option value="32">32 — Frozen Foods</option>
+            <option value="33">33 — Meat</option>
+            <option value="34">34 — Produce</option>
+            <option value="35">35 — Bakery</option>
+            <option value="36">36 — Dry Goods & Pasta</option>
+            <option value="37">37 — Canned Goods</option>
+            <option value="38">38 — Snacks</option>
+            <option value="40">40 — Beverages</option>
+            <option value="41">41 — Breakfast Foods</option>
+            <option value="42">42 — International Foods</option>
+            <option value="44">44 — Household Goods</option>
+            <option value="45">45 — Office Supplies</option>
+            <option value="46">46 — Books & Media</option>
+            <option value="47">47 — Crafts & Hobbies</option>
+            <option value="48">48 — Party Supplies</option>
+            <option value="49">49 — Stationery</option>
+            <option value="51">51 — Pharmacy OTC</option>
+            <option value="52">52 — Vitamins & Supplements</option>
+            <option value="54">54 — Small Appliances</option>
+            <option value="55">55 — Cookware</option>
+            <option value="56">56 — Storage & Organization</option>
+            <option value="58">58 — Lighting</option>
+            <option value="59">59 — Home Safety</option>
+            <option value="60">60 — Plumbing & Fixtures</option>
+            <option value="67">67 — Automotive Parts</option>
+            <option value="71">71 — Lawn & Garden Equipment</option>
+            <option value="72">72 — Grills & Outdoor Dining</option>
+            <option value="74">74 — Holiday Decor</option>
+            <option value="77">77 — Fabrics</option>
+            <option value="78">78 — Sewing Supplies</option>
+            <option value="79">79 — Crafts Materials</option>
+            <option value="80">80 — Paint Supplies</option>
+            <option value="81">81 — Plumbing Hardware</option>
+            <option value="82">82 — Electrical Supplies</option>
+            <option value="83">83 — Flooring</option>
+            <option value="85">85 — Housing Fixtures</option>
+            <option value="87">87 — Small Electronics</option>
+            <option value="90">90 — Cameras</option>
+            <option value="91">91 — Photo Center</option>
+            <option value="92">92 — Music & Instruments</option>
+            <option value="93">93 — Movies & Games</option>
+            <option value="94">94 — Luggage</option>
+            <option value="95">95 — Travel Essentials</option>
+            <option value="96">96 — Party Favors</option>
+            <option value="97">97 — Gift Wrap</option>
+            <option value="98">98 — Cards & Celebrations</option>
+            <option value="99">99 — Miscellaneous</option>
+            <option value="39">39 — Specialty Snacks</option>
+            <option value="50">50 — Adult Beverages</option>
+            <option value="43">43 — Organic Foods</option>
+            <option value="65">65 — Clearance Items</option>
+
+        </select>
+
+        <!-- ======================
+             MARKDOWN TOTAL
+        ======================= -->
+        <label>Markdown Total  
+            <small>(Total discount applied for this week)</small>
+        </label>
+        <input type="number" step="0.01" name="markdown_total" placeholder="Example: 3.75" required>
+
+        <!-- ======================
+             HOLIDAY
+        ======================= -->
+        <label>Is Holiday?  
+            <small>(1 = holiday week, 0 = normal week)</small>
+        </label>
+        <select name="isholiday" required>
+            <option value="0">0 — Normal Week</option>
+            <option value="1">1 — Holiday Week</option>
+        </select>
+
+        <!-- ======================
+             TEMPERATURE
+        ======================= -->
+        <label>Temperature  
+            <small>(Average temperature this week in °F)</small>
+        </label>
+        <input type="number" step="0.1" name="temperature" placeholder="Example: 41.2" required>
+
+        <!-- ======================
+             FUEL PRICE
+        ======================= -->
+        <label>Fuel Price  
+            <small>(Average fuel price in your region)</small>
+        </label>
+        <input type="number" step="0.01" name="fuel" placeholder="Example: 3.25" required>
+
+        <!-- ======================
+             CPI
+        ======================= -->
+        <label>CPI  
+            <small>(Consumer Price Index — cost of goods indicator)</small>
+        </label>
+        <input type="number" step="0.01" name="cpi" placeholder="Example: 212.4" required>
+
+        <!-- ======================
+             UNEMPLOYMENT
+        ======================= -->
+        <label>Unemployment  
+            <small>(Unemployment rate %)</small>
+        </label>
+        <input type="number" step="0.01" name="unemployment" placeholder="Example: 7.6" required>
+
+        <!-- ======================
+             STORE SIZE
+        ======================= -->
+        <label>Store Size  
+            <small>(Total store square footage)</small>
+        </label>
+        <input type="number" name="size" placeholder="Example: 160000" required>
+
+        <!-- ======================
+             STORE TYPE
+        ======================= -->
+        <label>Store Type  
+            <small>(A = large, B = medium, C = small)</small>
+        </label>
+        <select name="store_type" required>
+            <option value="A">A — Large Format</option>
+            <option value="B">B — Medium Format</option>
+            <option value="C">C — Small Format</option>
+        </select>
+
+        <!-- ======================
+             YEAR
+        ======================= -->
+        <label>Year  
+            <small>(4-digit year)</small>
+        </label>
+        <input type="number" name="year" placeholder="Example: 2012" required>
+
+        <!-- ======================
+             MONTH
+        ======================= -->
+        <label>Month  
+            <small>(1–12)</small>
+        </label>
+        <input type="number" name="month" min="1" max="12" required>
+
+        <!-- ======================
+             WEEK
+        ======================= -->
+        <label>Week  
+            <small>(1–52)</small>
+        </label>
+        <input type="number" name="week" min="1" max="52" required>
+
+        <button type="submit">Predict</button>
+
+    </form>
+
+    {% if prediction %}
+        <h2>Recommendation: <strong>{{ prediction }}</strong></h2>
+        {% if prediction %}
+
+        <div class="explanation-box">
+            <h3>Why:</h3>
+            <p>
+                <strong>Increase</strong> — The model expects higher demand relative to the current discount levels. 
+                Raising price or reducing markdowns may improve profit without hurting sales.
+            </p>
+            <p>
+                <strong>Decrease</strong> — Sales indicators suggest weaker demand. 
+                Lowering price or increasing markdowns may stimulate activity and prevent loss of revenue.
+            </p>
+            <p>
+                <strong>Hold</strong> — Market conditions show no strong upward or downward signal. 
+                Keeping your current price is the safest option for this scenario.
+            </p>
+    </div>
+{% endif %}
+
+    {% endif %}
+
+</body>
+</html>
