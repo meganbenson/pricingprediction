@@ -1,25 +1,39 @@
-Dynamic Pricing Recommendation Tool
-This project is a web-based application that predicts whether a product’s price should Increase, Decrease, or Hold based on Walmart-style historical features. Users can enter product-level information—such as store, department, markdown levels, economic indicators, holidays, and seasonal data—and the model returns a recommended pricing action.
-The tool demonstrates how machine-learning models can support dynamic pricing decisions by combining sales context, inventory conditions, and external economic factors.
-Features
-Input Form: Enter all relevant product attributes (store, department, markdown1–markdown5, CPI, unemployment, fuel price, temperature, holidays, and time features).
-Machine Learning Model: A trained Random Forest classifier predicts one of three price actions: Increase, Decrease, or Hold.
-Simple Web Interface: Built with Streamlit for fast deployment and clean presentation.
-Real-time Recommendations: The model outputs both the action and an explanation.
-Tech Stack
-Python (model training, preprocessing)
-scikit-learn (Random Forest classifier)
-Streamlit (web UI)
-NumPy / Pandas
-Pickle (model storage)
-How It Works
-The ML model is trained on Walmart-style weekly sales data.
-The model is saved as model.pkl.
-Users enter feature values through a Streamlit interface.
-The app loads the model and generates a pricing recommendation.
-Running the App
+# Dynamic Pricing Recommendation Tool
+
+A Streamlit web application that predicts whether a product’s price should **Increase**, **Decrease**, or **Hold** using a trained machine-learning model. Users input Walmart-style features such as store, department, markdown levels, economic indicators, and seasonal data. The model then returns a data-driven pricing recommendation.
+
+---
+
+## Features
+
+- **User Input Form:** Store, department, markdown1–markdown5, CPI, unemployment, fuel price, temperature, holiday flag, and time features.
+- **Machine Learning Model:** Random Forest classifier trained on Walmart-style weekly sales data.
+- **Real-Time Predictions:** Outputs an Increase / Decrease / Hold recommendation with contextual reasoning.
+- **Streamlit Interface:** Clean, simple layout for fast and intuitive interactions.
+
+---
+
+## Tech Stack
+
+- **Python**
+- **Streamlit**
+- **NumPy / Pandas**
+- **scikit-learn**
+- **Pickle** (model serialization)
+
+---
+
+## How It Works
+
+1. A machine-learning model is trained in Jupyter using Walmart-style weekly sales data.
+2. The trained model is exported as `model.pkl`.
+3. Streamlit loads the model and accepts user inputs.
+4. A pricing recommendation is generated in real time based on the input features.
+
+---
+
+## Running the App
+
+```bash
 pip install -r requirements.txt
 streamlit run app.py
-The app will launch in your browser at http://localhost:8501.
-Project Goals
-This project demonstrates how data-driven pricing strategies can replace static rules by reacting to real-world conditions such as demand shifts, inventory pressure, and economic change. It serves as an educational example of deploying a machine-learning model into a simple, user-friendly website.
